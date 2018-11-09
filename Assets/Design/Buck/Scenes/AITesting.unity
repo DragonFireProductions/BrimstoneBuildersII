@@ -451,7 +451,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957535173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25439267d52c1c4a88dc5fc799ee69c, type: 3}
+  m_Script: {fileID: 11500000, guid: 66c303e5dcf91324b9573cfac1c83c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 20
+  Targeting: 1
+  Target: {fileID: 340786500}
+  PanSpeed: 20
+  MouseSensitivity: 20
+  YOffset: 5
+  MinOffset: 5
+  MaxOffset: 5
+  MinAngle: -10
+  MaxAngle: 90
