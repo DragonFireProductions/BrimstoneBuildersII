@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController2 : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     float ZOffset;
     float Angle;
@@ -33,7 +33,7 @@ public class CameraController2 : MonoBehaviour
     void Update()
     {
         // Camera Zoom
-        ZOffset += Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * MouseSensitivity;
+        ZOffset -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * MouseSensitivity;
         ZOffset = Mathf.Clamp(ZOffset, MinOffset, MaxOffset);
 
         // Orbital Camera
