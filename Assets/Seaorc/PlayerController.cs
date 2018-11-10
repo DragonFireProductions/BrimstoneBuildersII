@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class PlayerController : MonoBehaviour
 {
-    NavMeshAgent agent;
+    CharacterMotor agent;
     public LayerMask MovementMask;
+    Interactable Focus;
 
     // Use this for initialization
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (GetComponent<CharacterMotor>())
+        {
+            agent = GetComponent<CharacterMotor>();
+        }
+        else
+        {
+            gameObject.AddComponent<CharacterMotor>();
+            agent = GetComponent<CharacterMotor>();
+        }
     }
 
     // Update is called once per frame
@@ -25,7 +35,38 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100, MovementMask))
             {
                 agent.SetDestination(hit.point);
+                DropFocus();
             }
+            if(Physics.Raycast(ray, out hit))
+            {
+                if(hit.collider.GetComponent<Interactable>())
+                {
+                    SetFocus(hit.collider.GetComponent<Interactable>());
+                }
+            }
+
+        }
+    }
+
+    void SetFocus (Interactable _Focus)
+    {
+        if (Focus != _Focus)
+        {
+            if (Focus != null)
+                _Focus.StopInteraction();
+            Focus = _Focus;
+            agent.SetTarget(_Focus);
+        }
+
+        _Focus.SetInteraction(transform);
+    }
+
+    void DropFocus ()
+    {
+        if (Focus != null)
+        {
+            Focus.StopInteraction();
+            agent.DropTarget();
         }
     }
 }
