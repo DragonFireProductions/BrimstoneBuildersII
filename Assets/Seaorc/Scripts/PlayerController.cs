@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Focus.Character != this)
+            DropFocus();
+        
+
         if (Selected)
         {
             if (Input.GetButtonDown("Fire2"))
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour
             agent.SetTarget(_Focus);
         }
 
-        _Focus.SetInteraction(transform);
+        _Focus.SetInteraction(this);
     }
 
     void DropFocus ()

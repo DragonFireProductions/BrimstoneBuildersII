@@ -59,5 +59,6 @@ public class CharacterMotor : MonoBehaviour
         Agent.stoppingDistance = 0;
         Agent.updateRotation = true;
         Target = null;
+        Agent.destination = transform.position;
     }
 }

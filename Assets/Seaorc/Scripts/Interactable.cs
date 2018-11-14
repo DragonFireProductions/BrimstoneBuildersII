@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     public bool DefaultAction;
     public float InteractionRange;
     public Transform InteractionPoint;
-    public Transform Character;
+    public PlayerController Character;
     public bool Interacted;
     
 
@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour
     {
         if (Character != null && !Interacted)
         {
-            if(Vector3.Distance(transform.position,Character.position) <= InteractionRange)
+            if(Vector3.Distance(transform.position,Character.transform.position) <= InteractionRange)
             {
                 Interact();
                 Interacted = true;
@@ -37,7 +37,7 @@ public class Interactable : MonoBehaviour
         Debug.Log("Performing Interaction: " + Tag);
     }
 
-    public void SetInteraction(Transform _Character)
+    public void SetInteraction(PlayerController _Character)
     {
         Character = _Character;
         Interacted = false;
