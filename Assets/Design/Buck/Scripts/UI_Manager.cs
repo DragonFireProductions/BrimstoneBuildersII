@@ -13,10 +13,7 @@ public class UI_Manager : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject characterMenu;
-
-    [SerializeField]
-    GameObject characterMenuInv;
+    GameObject characterInv;
 
     [SerializeField]
     GameObject characterMenuSkills;
@@ -60,97 +57,48 @@ public class UI_Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            characterMenu.SetActive(true);
-
-            if (characterMenuInv.activeSelf == false)
+            if (characterInv.activeSelf == false)
             {
-                characterMenuInv.SetActive(true);
-                characterMenuSkills.SetActive(false);
+                characterInv.SetActive(true);
             }
-            else if (characterMenuInv.activeSelf == true && Input.GetKeyDown(KeyCode.I))
+
+            else if (characterInv.activeSelf == true)
             {
-                characterMenu.SetActive(false);
-                characterMenuInv.SetActive(false);
-                characterMenuSkills.SetActive(false);
+                characterInv.SetActive(false);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            characterMenu.SetActive(true);
 
-            if (characterMenuSkills.activeSelf == false)
-            {
-                characterMenuInv.SetActive(false);
-                characterMenuSkills.SetActive(true);
-            }
-            else if (characterMenuSkills.activeSelf == true && Input.GetKeyDown(KeyCode.K))
-            {
-                characterMenu.SetActive(false);
-                characterMenuInv.SetActive(false);
-                characterMenuSkills.SetActive(false);
-            }
         }
     }
 
     //--------------------------------Character Menus--------------------------------------------
 
-    public void CharacterMenu()
-    {
-        if (characterMenu.activeSelf == false)
-        {
-            characterMenu.SetActive(true);
-            helpMenu.SetActive(false);
-        }
-        else
-        {
-            characterMenu.SetActive(false);
-            helpMenu.SetActive(false);
-        }
-    }
-
     public void CharacterMenuInventory()
     {
-        if (characterMenu.activeSelf == true)
+        if (characterInv.activeSelf == false)
         {
-            characterMenuInv.SetActive(true);
-            characterMenuSkills.SetActive(false);
+            characterInv.SetActive(true);
         }
-        else
+
+        else if (characterInv.activeSelf == true)
         {
-            characterMenuInv.SetActive(false);
-            characterMenuSkills.SetActive(false);
+            characterInv.SetActive(false);
         }
     }
 
     public void CharacterMenuSkills()
     {
-        if (characterMenu.activeSelf == true)
-        {
-            characterMenuSkills.SetActive(true);
-            characterMenuInv.SetActive(false);
-        }
-        else
-        {
-            characterMenuInv.SetActive(false);
-            characterMenuSkills.SetActive(false);
-        }
+
     }
 
     //-------------------------------------------------------------------------------------------
 
     public void HelpMenu()
     {
-        if (helpMenu.activeSelf == false)
-        {
-            characterMenu.SetActive(false);
-            helpMenu.SetActive(true);
-        }
-        else
-        {
-            characterMenu.SetActive(false);
-            helpMenu.SetActive(false);
-        }
+
     }
 
     public void WriteMessage(string Message)
