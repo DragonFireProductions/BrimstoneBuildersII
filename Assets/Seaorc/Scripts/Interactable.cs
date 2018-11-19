@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     public bool DefaultAction;
     public float InteractionRange;
     public Transform InteractionPoint;
-    public PlayerController Character;
+    public Character Unit;
     public bool Interacted;
     
 
@@ -22,9 +22,9 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Character != null && !Interacted)
+        if (Unit != null && !Interacted)
         {
-            if(Vector3.Distance(transform.position,Character.transform.position) <= InteractionRange)
+            if(Vector3.Distance(transform.position,Unit.transform.position) <= InteractionRange)
             {
                 Interact();
                 Interacted = true;
@@ -37,15 +37,15 @@ public class Interactable : MonoBehaviour
         Debug.Log("Performing Interaction: " + Tag);
     }
 
-    public void SetInteraction(PlayerController _Character)
+    public void SetInteraction(Character _Character)
     {
-        Character = _Character;
+        Unit = _Character;
         Interacted = false;
     }
 
     public void StopInteraction()
     {
-        Character = null;
+        Unit = null;
         Interacted = false;
     }
 }
