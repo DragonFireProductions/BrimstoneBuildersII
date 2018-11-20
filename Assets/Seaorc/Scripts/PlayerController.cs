@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    static List<Character> Units;
+    public static List<Character> Units;
     List<Character> SelectedUnits;
 
 
@@ -46,8 +46,20 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (!Input.GetKey(KeyCode.LeftShift))
+                    SelectedUnits = new List<Character>();
 
-
+                foreach (Character Unit in Units)
+                {
+                    if (hit.collider.gameObject == Unit.gameObject)
+                    {
+                        SelectedUnits.Add(Unit);
+                        break;
+                    }
+                }
+            }
         }
 
     }

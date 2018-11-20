@@ -19,6 +19,8 @@ public class Character : MonoBehaviour {
             gameObject.AddComponent<CharacterMotor>();
             agent = GetComponent<CharacterMotor>();
         }
+
+        PlayerController.Units.Add(this);
     }
 
     public void SetDestination(Vector3 position)
