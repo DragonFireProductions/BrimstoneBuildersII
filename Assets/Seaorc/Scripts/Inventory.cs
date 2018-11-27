@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<InventorySlot> Items = new List<InventorySlot>();
-    public float Slots;
+    public List<Slot> Items = new List<Slot>();
     [HideInInspector]
     public float TotalWeight;
     public float MaxWeight;
@@ -15,36 +14,34 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if(Items[i].item == item)
+            if (Items[i].item == item)
             {
-                if(Items[i].Count < item.MaxStack)
+                if (Items[i].Count < item.MaxStack)
                 {
-                    Items[i].Count = 1;
-                    UpdateUi = true;
-                    return true;
+                    if (TotalWeight + item.Weight <= MaxWeight)
+                    {
+                        Items[i].Count = 1;
+                        TotalWeight += item.Weight;
+                        UpdateUi = true;
+                        return true;
+                    }
                 }
             }
         }
 
-        if(Items.Count < Slots)
+        if (TotalWeight + item.Weight <= MaxWeight)
         {
-            if (TotalWeight + item.Weight <= MaxWeight)
-            {
-                InventorySlot NewSlot = new InventorySlot();
-                NewSlot.item = item;
-                NewSlot.Count = 1;
-                UpdateUi = true;
-                return true;
-            }
-            else
-            {
-                Debug.Log("Item too heavy");
-                return false;
-            }
+            Slot NewSlot = new Slot();
+            NewSlot.item = item;
+            NewSlot.Count = 1;
+            Items.Add(NewSlot);
+            TotalWeight += item.Weight;
+            UpdateUi = true;
+            return true;
         }
         else
         {
-            Debug.Log("Not enough slots for item");
+            Debug.Log("Item too heavy");
             return false;
         }
     }
@@ -55,7 +52,7 @@ public class Inventory : MonoBehaviour
     }
 }
 
-public class InventorySlot
+public class Slot
 {
     public Item item;
     public int Count;
