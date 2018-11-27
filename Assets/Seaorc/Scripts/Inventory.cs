@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
         
     }
 }
-
+[System.Serializable]
 public class Slot
 {
     public Item item;

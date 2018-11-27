@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224518986700297628}
+  - component: {fileID: 114346051093435286}
   m_Layer: 5
   m_Name: ItemPrefab
   m_TagString: Untagged
@@ -286,6 +287,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114346051093435286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015001137976518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426484dd870e01b4786e4e3e185369fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameText: {fileID: 114646767187609420}
+  IconImage: {fileID: 114808784710657576}
 --- !u!114 &114431905395134242
 MonoBehaviour:
   m_ObjectHideFlags: 1

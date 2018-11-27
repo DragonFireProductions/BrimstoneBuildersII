@@ -7,7 +7,7 @@ public class InventoryUi : MonoBehaviour
     public Transform InventoryPanal;
     public GameObject SlotPrefab;
 
-    Inventory CurrentInventory;
+    public Inventory CurrentInventory;
     List<InventorySlot> Slots;
 
     private void Update()
@@ -28,6 +28,8 @@ public class InventoryUi : MonoBehaviour
                 Slots.Add(slot);
                 slot.SetSlot(item);
             }
+
+            CurrentInventory.UpdateUi = false;
         }
     }
 
