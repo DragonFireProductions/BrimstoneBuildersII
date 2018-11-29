@@ -70,7 +70,15 @@ public class UI_Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            if (characterMenuSkills.activeSelf == false)
+            {
+                characterMenuSkills.SetActive(true);
+            }
 
+            else if (characterMenuSkills.activeSelf == true)
+            {
+                characterMenuSkills.SetActive(false);
+            }
         }
     }
 
@@ -91,7 +99,15 @@ public class UI_Manager : MonoBehaviour
 
     public void CharacterMenuSkills()
     {
+        if (characterMenuSkills.activeSelf == false)
+        {
+            characterMenuSkills.SetActive(true);
+        }
 
+        else if (characterMenuSkills.activeSelf == true)
+        {
+            characterMenuSkills.SetActive(false);
+        }
     }
 
     //-------------------------------------------------------------------------------------------
